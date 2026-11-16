@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+._*
+.venv/
+.Rhistory
+.RData
+renv/library/
+work/
+*.pt
+*.pth
+*.ckpt
+*.npz
+!proteomics/vendor/PLIER_0.99.0.tar.gz
+
+# Local model bundles and weight binaries
+!/weights/
+/weights/*
+!/weights/README.md
+!/weights/export.py
+/weights/local_release/
+*.safetensors

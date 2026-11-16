@@ -1,0 +1,62 @@
+{
+  "parameters": {
+    "seed": 42,
+    "plain_base_warmup_epochs": 20,
+    "joint_start_epoch": 31,
+    "factor_batch_size": 16,
+    "backbone_lr": 1.875e-05,
+    "plain_head_lr": 6e-05,
+    "agate_lr": 6e-05,
+    "spatial_head_lr": 6e-05,
+    "decoder_lr": 1.875e-05,
+    "joint_lr_warmup_epochs": 20,
+    "selection_min_epoch": 70,
+    "spatial_mode": "LOCAL_CAPACITY_CONTROL",
+    "reconstruction_model": "CP_F30"
+  },
+  "architecture": {
+    "architecture": {
+      "agate": {
+        "hidden_dim": 128,
+        "gate_hidden_dim": 32,
+        "feature_maximum_relative_deviation": 0.025,
+        "initial_alpha": 0.025,
+        "maximum_alpha": 0.15
+      },
+      "topk_spatial": {
+        "token_dim": 768,
+        "factor_count": 13,
+        "score_hidden_dim": 128,
+        "residual_hidden_dim": 64,
+        "spatial_gate_descriptor_dim": 768,
+        "spatial_gate_hidden_dim": 32,
+        "spatial_gate_initial": 0.25
+      }
+    },
+    "common": {
+      "optimizer_betas": [
+        0.9,
+        0.95
+      ],
+      "weight_decay": 0.01,
+      "global_gradient_clip": 1
+    },
+    "losses": {
+      "l2sp": {
+        "uniform_lambda": 0.01,
+        "gradient_norm_cap_to_primary": 0.05
+      },
+      "hybrid_auxiliary_route": {
+        "norm_only_total_cap_to_primary": 0.25
+      }
+    },
+    "candidates": {
+      "CP_F30": {
+        "decoder": "v12_plain",
+        "target_parameterization": "original",
+        "l2sp_mode": "uniform",
+        "famo_cap": 0.3
+      }
+    }
+  }
+}

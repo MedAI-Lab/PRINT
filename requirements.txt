@@ -1,0 +1,12 @@
+# Shared PRINT VPR inference module and PRINT diagnostic module environment (Python 3.12.3).
+# Install the CUDA 12.8 builds of torch and torchvision first.
+torch==2.8.0
+torchvision==0.23.0
+timm==1.0.20
+numpy==2.4.4
+scipy==1.16.2
+pandas==2.3.3
+scikit-learn==1.7.2
+Pillow==11.3.0
+openpyxl==3.1.5
+safetensors==0.8.0
